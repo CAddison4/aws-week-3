@@ -4,6 +4,7 @@ import fs from 'fs';
 import dotenv from 'dotenv';
 import {addImage, getImages} from './database.js'
 
+
 dotenv.config();
 
 
@@ -12,7 +13,12 @@ const upload = multer({ dest: "images/" });
 
 const port = process.env.PORT || 8080;
 
+// Before the other routes
+app.use(express.static("build"))
+
 //Get All Images:
+
+app.use(express.static("images"))
 app.get("/api/images", async (req, res) => {
     const images = await getImages()
     res.send({images})
