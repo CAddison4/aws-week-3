@@ -46,7 +46,11 @@ app.post("/api/images", upload.single("image"), async (req, res) => {
     console.log(description, imageName)
     res.send({result})
     });
-
+    
+// After all other routes
+app.get('*', (req, res) => {
+    res.sendFile('build/index.html');
+});
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
 
