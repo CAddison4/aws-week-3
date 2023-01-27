@@ -49,7 +49,7 @@ app.post("/api/images", upload.single("image"), async (req, res) => {
 	const fileName = generateFileName();
 
 	const buffer = await sharp(fileBuffer)
-		.resize({ height: 100, width: 100, fit: "contain" })
+		.resize({ height: 300, width: 300, fit: "cover" })
 		.toBuffer();
 
 	// Store the image in s3
